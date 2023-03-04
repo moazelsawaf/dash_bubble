@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/moazelsawaf/dash_bubble/main/doc/assets/package_banner.png" width="100%" alt="Dash Flags Banner" />
+<img src="https://raw.githubusercontent.com/moazelsawaf/dash_bubble/main/doc/assets/package_banner.png" width="100%" alt="Dash Bubble Banner" />
 <h2 align="center">
   Dash Bubble
 </h2>
