@@ -31,7 +31,7 @@ A Flutter plugin that allows you to create a floating bubble on the screen built
 
 <br>
 <p align="center">
-<img src="https://raw.githubusercontent.com/moazelsawaf/dash_bubble/main/doc/assets/animated_example.webp" width="50%" alt="Animated Example" />
+<img src="https://raw.githubusercontent.com/moazelsawaf/dash_bubble/main/doc/assets/animated_example.webp" width="25%" alt="Animated Example" />
 <br>
 This GIF is taken from the <a href="https://github.com/moazelsawaf/dash_bubble/tree/main/example">Example Project</a>
 </p>
