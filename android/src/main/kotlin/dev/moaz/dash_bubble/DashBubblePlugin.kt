@@ -26,7 +26,7 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
     private lateinit var bubbleManager: BubbleManager
     private lateinit var channel: MethodChannel
-    private lateinit var result: Result
+    private lateinit var requestPermissionResultHandler: Result
     private lateinit var activityBinding: ActivityPluginBinding
     private lateinit var mActivity: Activity
 
@@ -51,14 +51,15 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
      * It handles all the method calls and calls the appropriate method from the bubble manager
      */
     override fun onMethodCall(call: MethodCall, result: Result) {
-        this.result = result
-
         try {
             when (call.method) {
                 Constants.REQUEST_PERMISSION -> {
                     if (bubbleManager.requestPermission() == true) {
                         result.success(true)
+                        return
                     }
+
+                    requestPermissionResultHandler = result
                 }
                 Constants.HAS_PERMISSION -> result.success(bubbleManager.hasPermission())
                 Constants.IS_RUNNING -> result.success(bubbleManager.isRunning())
@@ -117,7 +118,7 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     /** This method is called when the permission request is completed */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
         if (requestCode == Constants.PERMISSION_REQUEST_CODE) {
-            result.success(bubbleManager.hasPermission())
+            requestPermissionResultHandler.success(bubbleManager.hasPermission())
             return true
         }
         return false
