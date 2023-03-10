@@ -11,7 +11,7 @@
 /// For more information on how to use this plugin, please refer to the [API Reference](https://pub.dev/documentation/dash_bubble/latest/) or the [Example Project](https://github.com/moazelsawaf/dash_bubble/tree/main/example)
 library dash_bubble;
 
-import 'dash_bubble_platform_interface.dart';
+import 'src/method_channel/dash_bubble_platform_interface.dart';
 import 'src/bubble_options.dart';
 
 export 'src/bubble_options.dart';

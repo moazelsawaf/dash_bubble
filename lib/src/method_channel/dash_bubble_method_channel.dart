@@ -1,6 +1,3 @@
-/// The method channel implementation of [DashBubblePlatform].
-library dash_bubble_method_channel;
-
 import 'dart:developer';
 import 'dart:io';
 
@@ -8,8 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import 'dash_bubble_platform_interface.dart';
-import 'src/constants.dart';
-import 'src/bubble_options.dart';
+import '../constants.dart';
+import '../bubble_options.dart';
 
 /// An implementation of [DashBubblePlatform] that uses method channels.
 class MethodChannelDashBubble extends DashBubblePlatform {

@@ -1,11 +1,8 @@
-/// The interface that implementations of dash_bubble must implement.
-library dash_bubble_platform_interface;
-
 import 'package:flutter/material.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'dash_bubble_method_channel.dart';
-import 'src/bubble_options.dart';
+import '../bubble_options.dart';
 
 abstract class DashBubblePlatform extends PlatformInterface {
   /// Constructs a DashBubblePlatform.

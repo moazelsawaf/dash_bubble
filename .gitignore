@@ -28,3 +28,8 @@ migrate_working_dir/
 .dart_tool/
 .packages
 build/
+
+# Temprorarly Ignored
+# ! Remove in the next version
+lib/dash_bubble_method_channel.dart
+lib/dash_bubble_platform_interface.dart
