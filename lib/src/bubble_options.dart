@@ -16,13 +16,13 @@ class BubbleOptions {
   final String? closeIcon;
 
   /// The initial starting position of the bubble on the x axis.
-  final int startLocationX;
+  final double startLocationX;
 
   /// The initial starting position of the bubble on the y axis.
-  final int startLocationY;
+  final double startLocationY;
 
   /// The size of the bubble.
-  final int bubbleSize;
+  final double bubbleSize;
 
   /// Whether to show the close button or not.
   final bool enableClose;

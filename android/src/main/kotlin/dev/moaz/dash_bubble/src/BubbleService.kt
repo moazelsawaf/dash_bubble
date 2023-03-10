@@ -1,4 +1,3 @@
-
 package dev.moaz.dash_bubble.src
 
 import android.app.Notification
@@ -67,11 +66,22 @@ class BubbleService : FloatingBubbleService() {
         )
 
         return FloatingBubble.Builder(this)
-            .bubble(bubbleIcon, bubbleOptions.bubbleSize!!, bubbleOptions.bubbleSize!!)
+            .bubble(
+                bubbleIcon,
+                bubbleOptions.bubbleSize!!.toInt(),
+                bubbleOptions.bubbleSize!!.toInt()
+            )
             .bubbleStyle(null)
-            .startLocation(bubbleOptions.startLocationX!!, bubbleOptions.startLocationY!!)
+            .startLocation(
+                bubbleOptions.startLocationX!!.toInt(),
+                bubbleOptions.startLocationY!!.toInt()
+            )
             .enableAnimateToEdge(bubbleOptions.enableAnimateToEdge!!)
-            .closeBubble(closeIcon, bubbleOptions.bubbleSize!!, bubbleOptions.bubbleSize!!)
+            .closeBubble(
+                closeIcon,
+                bubbleOptions.bubbleSize!!.toInt(),
+                bubbleOptions.bubbleSize!!.toInt()
+            )
             .closeBubbleStyle(null)
             .enableCloseBubble(bubbleOptions.enableClose!!)
             .bottomBackground(bubbleOptions.enableBottomShadow!!)
