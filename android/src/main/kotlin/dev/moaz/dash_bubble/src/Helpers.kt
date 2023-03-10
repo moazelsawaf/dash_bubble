@@ -65,7 +65,7 @@ class Helpers {
             val identifier = context.resources.getIdentifier(name, "drawable", context.packageName)
 
             return if (identifier == 0) {
-                Log.w("DASH_BUBBLE", "Could not find resource with name $name")
+                Log.w(Constants.ERROR_TAG, "Could not find resource with name $name")
                 default
             } else {
                 identifier

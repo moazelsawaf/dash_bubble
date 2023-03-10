@@ -70,7 +70,7 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                 else -> result.notImplemented()
             }
         } catch (e: Exception) {
-            result.error(Constants.ERROR_CODE, e.message, null)
+            result.error(Constants.ERROR_TAG, e.message, null)
         }
     }
 

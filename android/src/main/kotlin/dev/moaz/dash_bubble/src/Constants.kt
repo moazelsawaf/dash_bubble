@@ -7,7 +7,7 @@ class Constants {
         const val PERMISSION_REQUEST_CODE = 7000
         const val BUBBLE_TAP_INTENT = "bubble_tap_intent"
         const val BUBBLE_OPTIONS_INTENT_EXTRA = "bubble_options_intent_extra"
-        const val ERROR_CODE = "DASH_BUBBLE"
+        const val ERROR_TAG = "DASH_BUBBLE"
 
         // Methods
         const val REQUEST_PERMISSION = "requestPermission"
