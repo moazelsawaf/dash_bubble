@@ -38,7 +38,7 @@ class DashBubble {
   /// Check if the permission to draw over other apps is granted.
   ///
   /// Returns `true` if the permission is granted, `false` otherwise.
-  /// 
+  ///
   /// In Android versions prior to `Android 6.0 (M)`, this method will always return `true`.
   Future<bool> hasPermission() {
     return DashBubblePlatform.instance.hasPermission();
