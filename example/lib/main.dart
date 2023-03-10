@@ -94,8 +94,9 @@ class HomeScreen extends StatelessWidget {
                     options: BubbleOptions(
                       notificationTitle: 'Dash Bubble Playground',
                       notificationText: 'Dash Bubble service is running',
-                      bubbleIcon: 'youtube_icon',
-                      closeIcon: 'youtube_icon',
+                      // notificationIcon: 'github_bubble',
+                      bubbleIcon: 'github_bubble',
+                      // closeIcon: 'github_bubble',
                       bubbleSize: 60,
                       enableAnimateToEdge: true,
                       enableBottomShadow: true,
