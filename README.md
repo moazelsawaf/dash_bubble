@@ -27,7 +27,7 @@
 
 A Flutter plugin that allows you to create a floating bubble on the screen built on top of [Floating-Bubble-View](https://github.com/TorryDo/Floating-Bubble-View) library by [TorryDo](https://github.com/TorryDo) 💙
 
-*The plugin currently supports **Android** only.*
+*The plugin currently supports **Android** only and **doesn't support IOS because** the feature of drawing over other apps is not available there*
 
 <br>
 <p align="center">
@@ -49,7 +49,7 @@ android {
 }
 ```
 
-The plugin uses these two permissions but you don't need to add them to your `AndroidManifest.xml` file because the plugin will add them automatically:
+The plugin uses these two permissions but **you don't need to add them** to your `AndroidManifest.xml` file because the plugin will add them automatically:
 
 ```xml
 <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -75,12 +75,14 @@ DashBubble.instance.startBubble()
 
 ## 🧰 Available Methods
 
-**Note**: All the methods are asynchronous and has a return type of `Future<bool>`.
+### Notes:
+- All the methods are asynchronous and has a return type of `Future<bool>`.
+- All the methods returns `false` if the platform is not **Android**.
 
 | Method | Description | Parameters | Behavior | Notes |
 | --- | --- | --- | --- | --- |
 | `requestPermission()` | Requests the permission to draw over other apps | - | Returns `true` if the permission is granted, `false` otherwise | If the permission is already granted, this method will return `true` without asking the user<br><br>In Android versions prior to `Android 6.0 (M)`, this method will return `true` without asking the user |
-| `hasPermission()` | Checks if the permission to draw over other apps is granted | - | Returns `true` if the permission is granted, `false` otherwise | - |
+| `hasPermission()` | Checks if the permission to draw over other apps is granted | - | Returns `true` if the permission is granted, `false` otherwise | In Android versions prior to `Android 6.0 (M)`, this method will always return `true` |
 | `isRunning()` | Checks if the bubble is currently running | - | Returns `true` if the bubble is running, `false` otherwise | The bubble is considered running if it is visible on the screen |
 | `startBubble()` | Starts the bubble | BubbleOptions? options<br><br>Function()? onBubbleTap | Returns `true` if the bubble started successfully, `false` otherwise | If the bubble is already running or the permission is not granted, this method will return `false` |
 | `stopBubble()` | Stops the bubble | - | Returns `true` if the bubble stopped successfully, `false` otherwise | If the bubble is not running, this method will return `false` |
@@ -89,20 +91,20 @@ DashBubble.instance.startBubble()
 
 **Note**: All the options are optional and you can pass only the options you want to customize.
 
-| Option | Description | Default |
-| --- | --- | --- |
-| `notificationTitle` | The title of the service notification | `null` |
-| `notificationText` | The text of the service notification | `null` |
-| `notificationIcon` | The icon of the service notification | `null` |
-| `bubbleIcon` | The icon of the bubble | `null` |
-| `closeIcon` | The icon of the close button | `null` |
-| `startLocationX` | The initial starting position of the bubble on the x axis | `0` |
-| `startLocationY` | The initial starting position of the bubble on the y axis | `200` |
-| `bubbleSize` | The size of the bubble | `60` |
-| `enableClose` | Whether to show the close button or not | `true` |
-| `enableAnimateToEdge` | Whether to animate the bubble to the edge of the screen when it is dragged to the edge of the screen or not | `true` |
-| `enableBottomShadow` | Whether to show the bottom shadow behind the close button of the bubble or not | `true` |
-| `keepAliveWhenAppExit` | Whether to keep the bubble alive when the app is closed or not | `false` |
+| Option | Description | Default | Notes |
+| --- | --- | --- | --- |
+| `notificationTitle` | The title of the service notification | `null` | If not provided, the title will be the app name |
+| `notificationText` | The text of the service notification | `null` | If not provided, there will be no notification body |
+| `notificationIcon` | The icon of the service notification | `null` | The icon is set as an image file placed inside `android\app\src\main\res\drawable\` and the value of the parameter should be the the file name **without the extension**<br><br>If not provided, the icon will be the plugin icon |
+| `bubbleIcon` | The icon of the bubble | `null` | The icon is set as an image file placed inside `android\app\src\main\res\drawable\` and the value of the parameter should be the the file name **without the extension**<br><br>If not provided, the icon will be the plugin icon |
+| `closeIcon` | The icon of the close button | `null` | The icon is set as an image file placed inside `android\app\src\main\res\drawable\` and the value of the parameter should be the the file name **without the extension**<br><br>If not provided, there will be a default close icon |
+| `startLocationX` | The initial starting position of the bubble on the x axis | `0` | - |
+| `startLocationY` | The initial starting position of the bubble on the y axis | `200` | - |
+| `bubbleSize` | The size of the bubble | `60` | - |
+| `enableClose` | Whether to show the close button or not | `true` | - |
+| `enableAnimateToEdge` | Whether to animate the bubble to the edge of the screen when it is dragged to the edge of the screen or not | `true` | - |
+| `enableBottomShadow` | Whether to show the bottom shadow behind the close button of the bubble or not | `true` | - |
+| `keepAliveWhenAppExit` | Whether to keep the bubble alive when the app is closed or not | `false` | - |
 
 ## ✅ Roadmap
 
@@ -110,6 +112,7 @@ DashBubble.instance.startBubble()
 - [ ] Implement a ready-to-use `AppBubble` which starts automatically when the app is on the background and stops when the app is on the foreground and has the ability to bring the app to the foreground when the bubble is tapped 📱
 - [ ] Ability to pass a `Widget` as the `bubbleIcon` and `closeIcon` 💪🏻
 - [ ] Implement the `ExpandableView` feature in the original library ⚡
+- [ ] Implement the the rest of the available callbacks in the original library `onDestroy()`, `onMove(x,y)`, `onUp(x,y)`, `onDown(x,y)` 🔗
 
 ## 💪🏻 Contribution Guide
 
