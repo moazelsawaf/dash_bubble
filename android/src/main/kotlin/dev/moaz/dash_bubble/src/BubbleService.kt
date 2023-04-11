@@ -86,17 +86,20 @@ class BubbleService : FloatingBubbleService() {
             .enableCloseBubble(bubbleOptions.enableClose!!)
             .bottomBackground(bubbleOptions.enableBottomShadow!!)
             .addFloatingBubbleListener(object : FloatingBubble.Listener {
-                override fun onDestroy() {}
                 override fun onClick() {
                     onBubbleTap()
                     // Helpers.bringAppToForeground(applicationContext);
                 }
+                override fun onMove(x: Float, y: Float) {
 
-                override fun onMove(x: Int, y: Int) {}
-                override fun onUp(x: Int, y: Int) {}
-                override fun onDown(x: Int, y: Int) {}
+                }
+                override fun onUp(x: Float, y: Float) {
+
+                }
+                override fun onDown(x: Float, y: Float) {
+
+                }
             })
-            .opacity(1f)
     }
 
     /** This method is called when the bubble is tapped.

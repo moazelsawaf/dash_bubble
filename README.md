@@ -112,7 +112,7 @@ DashBubble.instance.startBubble()
 - [ ] Implement a ready-to-use `AppBubble` which starts automatically when the app is on the background and stops when the app is on the foreground and has the ability to bring the app to the foreground when the bubble is tapped 📱
 - [ ] Ability to pass a `Widget` as the `bubbleIcon` and `closeIcon` 💪🏻
 - [ ] Implement the `ExpandableView` feature in the original library ⚡
-- [ ] Implement the the rest of the available callbacks in the original library `onDestroy()`, `onMove(x,y)`, `onUp(x,y)`, `onDown(x,y)` 🔗
+- [ ] Implement the the rest of the available callbacks in the original library `onMove(x,y)`, `onUp(x,y)`, and `onDown(x,y)` 🔗
 
 ## 💪🏻 Contribution Guide
 
