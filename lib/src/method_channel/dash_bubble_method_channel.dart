@@ -28,16 +28,12 @@ class MethodChannelDashBubble extends DashBubblePlatform {
       return (await methodChannel.invokeMethod<bool>(method, arguments))!;
     } on PlatformException catch (_) {
       logError(
-        '''PlatformException: $method
-        
-        Please report this issue on GitHub via: https://github.com/moazelsawaf/dash_bubble/issues/new''',
+        'PlatformException: $method\n\nPlease report this issue on GitHub via: https://github.com/moazelsawaf/dash_bubble/issues/new',
       );
       rethrow;
     } on MissingPluginException catch (_) {
       logError(
-        '''MissingPluginException: $method
-
-        If you have not restarted your app after adding the plugin, please do and try again.''',
+        'MissingPluginException: $method\n\nIf you have not restarted your app after adding the plugin, please do and try again.',
       );
       rethrow;
     }
