@@ -31,8 +31,3 @@ build/
 
 # Visual Studio related
 .vscode
-
-# Temprorarly Ignored
-# ! Remove in the next version
-lib/dash_bubble_method_channel.dart
-lib/dash_bubble_platform_interface.dart
