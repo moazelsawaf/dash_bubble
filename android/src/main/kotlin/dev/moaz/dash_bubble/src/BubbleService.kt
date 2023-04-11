@@ -4,6 +4,7 @@ import android.app.Notification
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.torrydo.floatingbubbleview.BubbleBehavior
 import com.torrydo.floatingbubbleview.FloatingBubble
 import com.torrydo.floatingbubbleview.FloatingBubbleService
 import dev.moaz.dash_bubble.R
@@ -85,6 +86,9 @@ class BubbleService : FloatingBubbleService() {
             .closeBubbleStyle(null)
             .enableCloseBubble(bubbleOptions.enableClose!!)
             .bottomBackground(bubbleOptions.enableBottomShadow!!)
+            .opacity(bubbleOptions.opacity!!.toFloat())
+            .behavior(BubbleBehavior.values()[bubbleOptions.closeBehavior!!])
+            .closablePerimeter(bubbleOptions.distanceToClose!!.toInt())
             .addFloatingBubbleListener(object : FloatingBubble.Listener {
                 override fun onClick() {
                     onBubbleTap()

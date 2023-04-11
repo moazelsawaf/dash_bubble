@@ -15,6 +15,7 @@ import 'src/method_channel/dash_bubble_platform_interface.dart';
 import 'src/bubble_options.dart';
 
 export 'src/bubble_options.dart';
+export 'src/enums/enums.dart';
 
 /// The main class of the plugin.
 class DashBubble {

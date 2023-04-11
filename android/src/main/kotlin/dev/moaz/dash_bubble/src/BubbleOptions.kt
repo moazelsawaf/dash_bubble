@@ -12,7 +12,10 @@ import kotlinx.android.parcel.Parcelize
  * @param startLocationX The x coordinate of the bubble.
  * @param startLocationY The y coordinate of the bubble.
  * @param bubbleSize The size of the bubble.
+ * @param opacity The opacity of the bubble.
  * @param enableClose Whether the bubble can be closed or not.
+ * @param closeBehavior The behavior of the close button.
+ * @param distanceToClose The distance between the bubble and the bottom edge of the screen to show the close button.
  * @param enableAnimateToEdge Whether the bubble can be animated to the edge or not.
  * @param enableBottomShadow Whether the bubble has a bottom shadow behind the close button or not.
  * @param keepAliveWhenAppExit Whether the bubble will be kept alive when the app is closed or not.
@@ -27,8 +30,11 @@ data class BubbleOptions(
     val startLocationX: Double?,
     val startLocationY: Double?,
     val bubbleSize: Double?,
+    val opacity: Double?,
     val enableClose: Boolean?,
+    val closeBehavior: Int?,
+    val distanceToClose: Double?,
     val enableAnimateToEdge: Boolean?,
     val enableBottomShadow: Boolean?,
-    val keepAliveWhenAppExit: Boolean?
+    val keepAliveWhenAppExit: Boolean?,
 ) : Parcelable

@@ -1,3 +1,5 @@
+import 'enums/enums.dart';
+
 /// [BubbleOptions] is a class that contains all the customizable options for the bubble passed to the [DashBubble.startBubble] method.
 class BubbleOptions {
   /// The title of the service notification.
@@ -24,8 +26,16 @@ class BubbleOptions {
   /// The size of the bubble.
   final double bubbleSize;
 
+  /// The opacity of the bubble and the close button.
+  final double opacity;
+
   /// Whether to show the close button or not.
   final bool enableClose;
+
+  final CloseBehavior closeBehavior;
+
+  /// The distance between the bubble and the bottom edge of the screen to show the close button.
+  final double distanceToClose;
 
   /// Whether to animate the bubble to the edge of the screen when it is dragged to the edge of the screen or not.
   final bool enableAnimateToEdge;
@@ -45,7 +55,10 @@ class BubbleOptions {
     this.startLocationX = 0,
     this.startLocationY = 200,
     this.bubbleSize = 60,
+    this.opacity = 1,
     this.enableClose = true,
+    this.closeBehavior = CloseBehavior.following,
+    this.distanceToClose = 100,
     this.enableAnimateToEdge = true,
     this.enableBottomShadow = true,
     this.keepAliveWhenAppExit = false,
@@ -61,7 +74,10 @@ class BubbleOptions {
       'startLocationX': startLocationX,
       'startLocationY': startLocationY,
       'bubbleSize': bubbleSize,
+      'opacity': opacity,
       'enableClose': enableClose,
+      'closeBehavior': closeBehavior.index,
+      'distanceToClose': distanceToClose,
       'enableAnimateToEdge': enableAnimateToEdge,
       'enableBottomShadow': enableBottomShadow,
       'keepAliveWhenAppExit': keepAliveWhenAppExit,

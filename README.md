@@ -101,7 +101,10 @@ DashBubble.instance.startBubble()
 | `startLocationX` | The initial starting position of the bubble on the x axis | `0` | - |
 | `startLocationY` | The initial starting position of the bubble on the y axis | `200` | - |
 | `bubbleSize` | The size of the bubble | `60` | - |
+| `opacity` | The opacity of the bubble | `1.0` | The value must be between `0.0` and `1.0` |
 | `enableClose` | Whether to show the close button or not | `true` | - |
+| `closeBehavior` | The behavior of the close button | `CloseBehavior.following` | The value must be a member of `CloseBehavior` enum<br><br>Available values:<br>`CloseBehavior.following`<br>`CloseBehavior.fixed` |
+| `distanceToClose` |The distance between the bubble and the bottom edge of the screen to show the close button | `100` | - |
 | `enableAnimateToEdge` | Whether to animate the bubble to the edge of the screen when it is dragged to the edge of the screen or not | `true` | - |
 | `enableBottomShadow` | Whether to show the bottom shadow behind the close button of the bubble or not | `true` | - |
 | `keepAliveWhenAppExit` | Whether to keep the bubble alive when the app is closed or not | `false` | - |

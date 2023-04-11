@@ -45,7 +45,10 @@ class Helpers {
                 call.argument(Constants.START_LOCATION_X),
                 call.argument(Constants.START_LOCATION_Y),
                 call.argument(Constants.BUBBLE_SIZE),
+                call.argument(Constants.OPACITY),
                 call.argument(Constants.ENABLE_CLOSE),
+                call.argument(Constants.CLOSE_BEHAVIOR),
+                call.argument(Constants.DISTANCE_TO_CLOSE),
                 call.argument(Constants.ENABLE_ANIMATE_TO_EDGE),
                 call.argument(Constants.ENABLE_BOTTOM_SHADOW),
                 call.argument(Constants.KEEP_ALIVE_WHEN_APP_EXIT)
