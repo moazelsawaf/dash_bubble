@@ -62,7 +62,14 @@ class BubbleOptions {
     this.enableAnimateToEdge = true,
     this.enableBottomShadow = true,
     this.keepAliveWhenAppExit = false,
-  });
+  })  : assert(
+          bubbleSize >= 0,
+          'bubbleSize must be greater than or equal to 0',
+        ),
+        assert(
+          opacity >= 0 && opacity <= 1,
+          'opacity must be between 0 and 1',
+        );
 
   Map<String, dynamic> toMap() {
     return {
