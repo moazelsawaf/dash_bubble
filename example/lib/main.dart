@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:dash_bubble/dash_bubble.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'snackbars.dart';
@@ -108,15 +107,22 @@ class HomeScreen extends StatelessWidget {
                       enableBottomShadow: true,
                       keepAliveWhenAppExit: false,
                     ),
-                    onBubbleTap: () {
-                      if (kDebugMode) print('Bubble Tapped');
-
-                      SnackBars.show(
-                        context: context,
-                        status: SnackBarStatus.success,
-                        message: 'Bubble Tapped',
-                      );
-                    },
+                    onTap: () => _logMessage(
+                      context: context,
+                      message: 'Bubble Tapped',
+                    ),
+                    onTapDown: (x, y) => _logMessage(
+                      context: context,
+                      message: 'Bubble Tapped Down on: $x, $y',
+                    ),
+                    onTapUp: (x, y) => _logMessage(
+                      context: context,
+                      message: 'Bubble Tapped Up on: $x, $y',
+                    ),
+                    onMove: (x, y) => _logMessage(
+                      context: context,
+                      message: 'Bubble Moved to: $x, $y',
+                    ),
                   );
                 },
                 child: const Text('Start Bubble'),
@@ -204,14 +210,20 @@ class HomeScreen extends StatelessWidget {
   Future<void> _startBubble(
     BuildContext context, {
     BubbleOptions? options,
-    VoidCallback? onBubbleTap,
+    VoidCallback? onTap,
+    Function(double x, double y)? onTapDown,
+    Function(double x, double y)? onTapUp,
+    Function(double x, double y)? onMove,
   }) async {
     await _runMethod(
       context,
       () async {
         final hasStarted = await DashBubble.instance.startBubble(
           options: options,
-          onBubbleTap: onBubbleTap,
+          onTap: onTap,
+          onTapDown: onTapDown,
+          onTapUp: onTapUp,
+          onMove: onMove,
         );
 
         SnackBars.show(
@@ -235,6 +247,16 @@ class HomeScreen extends StatelessWidget {
           message: hasStopped ? 'Bubble Stopped' : 'Bubble has not Stopped',
         );
       },
+    );
+  }
+
+  void _logMessage({required BuildContext context, required String message}) {
+    log(name: 'DashBubblePlayground', message);
+
+    SnackBars.show(
+      context: context,
+      status: SnackBarStatus.success,
+      message: message,
     );
   }
 }

@@ -63,13 +63,30 @@ class DashBubble {
   /// Returns `true` if the bubble is started successfully, `false` otherwise.
   ///
   /// If the bubble is already running or the permission is not granted, this method will return `false`.
+  ///
+  /// [options] is and optional parameter that allows you to customize the bubble.
+  ///
+  /// [onTap] is an optional callback that will be called when the bubble is tapped.
+  ///
+  /// [onTapDown] is an optional callback that will be called when the bubble is tapped down (pressed), it will receive the `x` and `y` coordinates of the bubble when it is tapped down (pressed).
+  ///
+  /// [onTapUp] is an optional callback that will be called when the bubble is tapped up (released), it will receive the `x` and `y` coordinates of the bubble when it is tapped up (released).
+  ///
+  /// [onMove] is an optional callback that will be called when the bubble is moved, it will receive the new `x` and `y` coordinates of the bubble after it is moved.
+  ///
   Future<bool> startBubble({
     BubbleOptions? options,
-    Function()? onBubbleTap,
+    Function()? onTap,
+    Function(double x, double y)? onTapDown,
+    Function(double x, double y)? onTapUp,
+    Function(double x, double y)? onMove,
   }) {
     return DashBubblePlatform.instance.startBubble(
       options: options,
-      onBubbleTap: onBubbleTap,
+      onTap: onTap,
+      onTapDown: onTapDown,
+      onTapUp: onTapUp,
+      onMove: onMove,
     );
   }
 

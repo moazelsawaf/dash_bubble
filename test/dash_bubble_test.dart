@@ -25,8 +25,13 @@ class MockDashBubblePlatform
   }
 
   @override
-  Future<bool> startBubble(
-      {BubbleOptions? options, VoidCallback? onBubbleTap}) {
+  Future<bool> startBubble({
+    BubbleOptions? options,
+    VoidCallback? onTap,
+    Function(double x, double y)? onTapDown,
+    Function(double x, double y)? onTapUp,
+    Function(double x, double y)? onMove,
+  }) {
     throw UnimplementedError();
   }
 

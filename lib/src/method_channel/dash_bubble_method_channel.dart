@@ -61,16 +61,41 @@ class MethodChannelDashBubble extends DashBubblePlatform {
   @override
   Future<bool> startBubble({
     BubbleOptions? options,
-    VoidCallback? onBubbleTap,
+    VoidCallback? onTap,
+    Function(double x, double y)? onTapDown,
+    Function(double x, double y)? onTapUp,
+    Function(double x, double y)? onMove,
   }) async {
     methodChannel.setMethodCallHandler((call) async {
-      if (call.method == Constants.onBubbleTap) {
-        onBubbleTap?.call();
-      } else {
-        throw UnimplementedError('Method ${call.method} is not implemented');
+      switch (call.method) {
+        case Constants.onTap:
+          onTap?.call();
+          break;
+        case Constants.onTapDown:
+          onTapDown?.call(
+            call.arguments[Constants.xAxisValue],
+            call.arguments[Constants.yAxisValue],
+          );
+          break;
+        case Constants.onTapUp:
+          onTapUp?.call(
+            call.arguments[Constants.xAxisValue],
+            call.arguments[Constants.yAxisValue],
+          );
+          break;
+        case Constants.onMove:
+          onMove?.call(
+            call.arguments[Constants.xAxisValue],
+            call.arguments[Constants.yAxisValue],
+          );
+          break;
+        default:
+          throw UnimplementedError(
+            'Method ${call.method} is not implemented',
+          );
       }
     });
-
+    
     return (await _invokeMethod(
       Constants.startBubble,
       (options ?? BubbleOptions()).toMap(),

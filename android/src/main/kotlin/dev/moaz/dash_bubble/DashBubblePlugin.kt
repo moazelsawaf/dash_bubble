@@ -1,11 +1,10 @@
 package dev.moaz.dash_bubble
 
 import android.app.Activity
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import dev.moaz.dash_bubble.src.BroadcastListener
 import dev.moaz.dash_bubble.src.BubbleManager
 import dev.moaz.dash_bubble.src.Constants
 import dev.moaz.dash_bubble.src.Helpers
@@ -29,15 +28,7 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     private lateinit var requestPermissionResultHandler: Result
     private lateinit var activityBinding: ActivityPluginBinding
     private lateinit var mActivity: Activity
-
-    /** This broadcast receiver is used to listen for the tap on the bubble
-     * It calls the onBubbleTap method when the bubble is tapped
-     */
-    private val messageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent) {
-            onBubbleTap()
-        }
-    }
+    private lateinit var broadcastListener: BroadcastListener
 
     /** This method is called when the plugin is attached to the flutter engine
      * It initializes the method channel and sets the method call handler
@@ -95,9 +86,16 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
         mActivity = activityBinding.activity
 
         bubbleManager = BubbleManager(mActivity)
+        broadcastListener = BroadcastListener(channel)
+
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(Constants.ON_TAP);
+        intentFilter.addAction(Constants.ON_TAP_DOWN);
+        intentFilter.addAction(Constants.ON_TAP_UP);
+        intentFilter.addAction(Constants.ON_MOVE);
 
         LocalBroadcastManager.getInstance(mActivity)
-            .registerReceiver(messageReceiver, IntentFilter(Constants.BUBBLE_TAP_INTENT))
+            .registerReceiver(broadcastListener, intentFilter)
     }
 
     /** This method is called when the activity is recreated */
@@ -112,7 +110,7 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     override fun onDetachedFromActivity() {
         activityBinding.removeActivityResultListener(this);
 
-        LocalBroadcastManager.getInstance(mActivity).unregisterReceiver(messageReceiver)
+        LocalBroadcastManager.getInstance(mActivity).unregisterReceiver(broadcastListener)
     }
 
     /** This method is called when the permission request is completed */
@@ -122,10 +120,5 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
             return true
         }
         return false
-    }
-
-    /** This method is called when the bubble is tapped */
-    private fun onBubbleTap() {
-        channel.invokeMethod(Constants.ON_BUBBLE_TAP, null)
     }
 }

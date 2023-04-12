@@ -43,7 +43,10 @@ abstract class DashBubblePlatform extends PlatformInterface {
   /// Start the bubble.
   Future<bool> startBubble({
     BubbleOptions? options,
-    VoidCallback? onBubbleTap,
+    VoidCallback? onTap,
+    Function(double x, double y)? onTapDown,
+    Function(double x, double y)? onTapUp,
+    Function(double x, double y)? onMove,
   }) async {
     throw UnimplementedError('startBubble() has not been implemented.');
   }

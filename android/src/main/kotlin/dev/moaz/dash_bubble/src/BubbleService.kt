@@ -3,7 +3,6 @@ package dev.moaz.dash_bubble.src
 import android.app.Notification
 import android.content.Intent
 import androidx.core.app.NotificationCompat
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.torrydo.floatingbubbleview.BubbleBehavior
 import com.torrydo.floatingbubbleview.FloatingBubble
 import com.torrydo.floatingbubbleview.FloatingBubbleService
@@ -11,7 +10,6 @@ import dev.moaz.dash_bubble.R
 
 /** BubbleService is the service that will be started when the bubble is started. */
 class BubbleService : FloatingBubbleService() {
-
     private lateinit var bubbleOptions: BubbleOptions
 
     /** This method is called when the service is started
@@ -89,29 +87,7 @@ class BubbleService : FloatingBubbleService() {
             .opacity(bubbleOptions.opacity!!.toFloat())
             .behavior(BubbleBehavior.values()[bubbleOptions.closeBehavior!!])
             .closablePerimeter(bubbleOptions.distanceToClose!!.toInt())
-            .addFloatingBubbleListener(object : FloatingBubble.Listener {
-                override fun onClick() {
-                    onBubbleTap()
-                    // Helpers.bringAppToForeground(applicationContext);
-                }
-                override fun onMove(x: Float, y: Float) {
-
-                }
-                override fun onUp(x: Float, y: Float) {
-
-                }
-                override fun onDown(x: Float, y: Float) {
-
-                }
-            })
-    }
-
-    /** This method is called when the bubble is tapped.
-     * It sends a broadcast to the app to handle the tap.
-     */
-    private fun onBubbleTap() {
-        val intent = Intent(Constants.BUBBLE_TAP_INTENT)
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
+            .addFloatingBubbleListener(BubbleCallbackListener(this))
     }
 
     /** This method is called when the app is closed.

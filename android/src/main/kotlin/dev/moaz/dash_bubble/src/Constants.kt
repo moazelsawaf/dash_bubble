@@ -5,9 +5,16 @@ class Constants {
     companion object {
         const val METHOD_CHANNEL = "dash_bubble"
         const val PERMISSION_REQUEST_CODE = 7000
-        const val BUBBLE_TAP_INTENT = "bubble_tap_intent"
-        const val BUBBLE_OPTIONS_INTENT_EXTRA = "bubble_options_intent_extra"
+        const val BUBBLE_OPTIONS_INTENT_EXTRA = "bubbleOptionsIntentExtra"
         const val ERROR_TAG = "DASH_BUBBLE"
+
+        // Bubble Callbacks
+        const val ON_TAP = "onTap"
+        const val ON_TAP_DOWN = "onTapDown"
+        const val ON_TAP_UP = "onTapUp"
+        const val ON_MOVE = "onMove"
+        const val X_AXIS_VALUE = "xAxisValue"
+        const val Y_AXIS_VALUE = "yAxisValue"
 
         // Methods
         const val REQUEST_PERMISSION = "requestPermission"
@@ -15,7 +22,6 @@ class Constants {
         const val IS_RUNNING = "isRunning"
         const val START_BUBBLE = "startBubble"
         const val STOP_BUBBLE = "stopBubble"
-        const val ON_BUBBLE_TAP = "onBubbleTap"
 
         // Bubble Options Arguments
         const val NOTIFICATION_TITLE = "notificationTitle"

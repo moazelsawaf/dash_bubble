@@ -8,6 +8,8 @@ class Constants {
 
   // Miscellaneous
   static const errorLogName = 'DashBubble';
+  static const xAxisValue = 'xAxisValue';
+  static const yAxisValue = 'yAxisValue';
 
   // Native Methods Names
   static const requestPermission = 'requestPermission';
@@ -15,5 +17,8 @@ class Constants {
   static const isRunning = 'isRunning';
   static const startBubble = 'startBubble';
   static const stopBubble = 'stopBubble';
-  static const onBubbleTap = 'onBubbleTap';
+  static const onTap = 'onTap';
+  static const onTapDown = 'onTapDown';
+  static const onTapUp = 'onTapUp';
+  static const onMove = 'onMove';
 }

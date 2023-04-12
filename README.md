@@ -37,6 +37,7 @@ This GIF is taken from the <a href="https://github.com/moazelsawaf/dash_bubble/t
 </p>
 
 ## 🔧 Setup
+
 Set the minimum SDK version to `21` or higher in your `android/app/build.gradle` file:
 
 ```gradle
@@ -75,7 +76,8 @@ DashBubble.instance.startBubble()
 
 ## 🧰 Available Methods
 
-### Notes:
+### Notes
+
 - All the methods are asynchronous and has a return type of `Future<bool>`.
 - All the methods returns `false` if the platform is not **Android**.
 
@@ -84,7 +86,7 @@ DashBubble.instance.startBubble()
 | `requestPermission()` | Requests the permission to draw over other apps | - | Returns `true` if the permission is granted, `false` otherwise | If the permission is already granted, this method will return `true` without asking the user<br><br>In Android versions prior to `Android 6.0 (M)`, this method will return `true` without asking the user |
 | `hasPermission()` | Checks if the permission to draw over other apps is granted | - | Returns `true` if the permission is granted, `false` otherwise | In Android versions prior to `Android 6.0 (M)`, this method will always return `true` |
 | `isRunning()` | Checks if the bubble is currently running | - | Returns `true` if the bubble is running, `false` otherwise | The bubble is considered running if it is visible on the screen |
-| `startBubble()` | Starts the bubble | BubbleOptions? options<br><br>Function()? onBubbleTap | Returns `true` if the bubble started successfully, `false` otherwise | If the bubble is already running or the permission is not granted, this method will return `false` |
+| `startBubble()` | Starts the bubble | BubbleOptions? options<br><br>[Available Callbacks](#📞-available-callbacks) | Returns `true` if the bubble started successfully, `false` otherwise | If the bubble is already running or the permission is not granted, this method will return `false` |
 | `stopBubble()` | Stops the bubble | - | Returns `true` if the bubble stopped successfully, `false` otherwise | If the bubble is not running, this method will return `false` |
 
 ## 📝 Bubble Customization Options
@@ -109,13 +111,24 @@ DashBubble.instance.startBubble()
 | `enableBottomShadow` | Whether to show the bottom shadow behind the close button of the bubble or not | `true` | - |
 | `keepAliveWhenAppExit` | Whether to keep the bubble alive when the app is closed or not | `false` | - |
 
+## 📞 Available Callbacks
+
+**Note**: All the callbacks are optional and they all can be passed as parameters to the `startBubble()` method.
+
+| Callback | Description | Parameters | Notes |
+| --- | --- | --- | --- |
+| `onTap` | Called when the bubble is tapped | - | - |
+| `onTapDown` | Called when the bubble is tapped down (pressed) | `double x`<br>`double y` | The parameters `x` and `y` are the coordinates of the bubble when it is tapped down |
+| `onTapUp` | Called when the bubble is tapped up (released) | `double x`<br>`double y` | The parameters `x` and `y` are the new coordinates of the bubble after it is tapped up |
+| `onMove` | Called when the bubble is moved | `double x`<br>`double y` | The parameters `x` and `y` are the new coordinates of the bubble after it is moved |
+
 ## ✅ Roadmap
 
 - [ ] Add Tests 🧪
 - [ ] Implement a ready-to-use `AppBubble` which starts automatically when the app is on the background and stops when the app is on the foreground and has the ability to bring the app to the foreground when the bubble is tapped 📱
 - [ ] Ability to pass a `Widget` as the `bubbleIcon` and `closeIcon` 💪🏻
 - [ ] Implement the `ExpandableView` feature in the original library ⚡
-- [ ] Implement the the rest of the available callbacks in the original library `onMove(x,y)`, `onUp(x,y)`, and `onDown(x,y)` 🔗
+- [x] Implement the the rest of the available callbacks in the original library `onMove(x,y)`, `onUp(x,y)`, and `onDown(x,y)` 🔗
 
 ## 💪🏻 Contribution Guide
 
