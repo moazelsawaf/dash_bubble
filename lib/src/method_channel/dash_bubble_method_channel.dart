@@ -95,7 +95,7 @@ class MethodChannelDashBubble extends DashBubblePlatform {
           );
       }
     });
-    
+
     return (await _invokeMethod(
       Constants.startBubble,
       (options ?? BubbleOptions()).toMap(),
