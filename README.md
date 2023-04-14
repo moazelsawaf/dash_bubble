@@ -36,6 +36,13 @@ A Flutter plugin that allows you to create a floating bubble on the screen built
 This GIF is taken from the <a href="https://github.com/moazelsawaf/dash_bubble/tree/main/example">Example Project</a>
 </p>
 
+## 🚧 Breaking Changes
+
+### v1.0.0
+
+* 🚚 rename `onBubbleTap()` callback to `onTap()` in `startBubble()` method.
+* ✨ convert the values of `startLocationX` and `startLocationY` to be in density-independent pixels (dp) instead of pixels (px) as per Flutter convention.
+
 ## 🔧 Setup
 
 Set the minimum SDK version to `21` or higher in your `android/app/build.gradle` file:
@@ -86,7 +93,7 @@ DashBubble.instance.startBubble()
 | `requestPermission()` | Requests the permission to draw over other apps | - | Returns `true` if the permission is granted, `false` otherwise | If the permission is already granted, this method will return `true` without asking the user<br><br>In Android versions prior to `Android 6.0 (M)`, this method will return `true` without asking the user |
 | `hasPermission()` | Checks if the permission to draw over other apps is granted | - | Returns `true` if the permission is granted, `false` otherwise | In Android versions prior to `Android 6.0 (M)`, this method will always return `true` |
 | `isRunning()` | Checks if the bubble is currently running | - | Returns `true` if the bubble is running, `false` otherwise | The bubble is considered running if it is visible on the screen |
-| `startBubble()` | Starts the bubble | BubbleOptions? options<br><br>[Available Callbacks](#📞-available-callbacks) | Returns `true` if the bubble started successfully, `false` otherwise | If the bubble is already running or the permission is not granted, this method will return `false` |
+| `startBubble()` | Starts the bubble | BubbleOptions? options<br><br>[Available Callbacks](#-available-callbacks) | Returns `true` if the bubble started successfully, `false` otherwise | If the bubble is already running or the permission is not granted, this method will return `false` |
 | `stopBubble()` | Stops the bubble | - | Returns `true` if the bubble stopped successfully, `false` otherwise | If the bubble is not running, this method will return `false` |
 
 ## 📝 Bubble Customization Options
