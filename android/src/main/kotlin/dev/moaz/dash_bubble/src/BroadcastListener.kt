@@ -41,10 +41,10 @@ class BroadcastListener(channel: MethodChannel) : BroadcastReceiver() {
     }
 
     /** This method is used to get the coordinates from the intent extras. */
-    private fun getCoordinatesValues(intent: Intent): HashMap<String, Float> {
+    private fun getCoordinatesValues(intent: Intent): HashMap<String, Double> {
         return hashMapOf(
-            Constants.X_AXIS_VALUE to intent.getFloatExtra(Constants.X_AXIS_VALUE, 0f),
-            Constants.Y_AXIS_VALUE to intent.getFloatExtra(Constants.Y_AXIS_VALUE, 0f)
+            Constants.X_AXIS_VALUE to intent.getDoubleExtra(Constants.X_AXIS_VALUE, 0.0),
+            Constants.Y_AXIS_VALUE to intent.getDoubleExtra(Constants.Y_AXIS_VALUE, 0.0)
         )
     }
 }

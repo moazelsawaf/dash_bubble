@@ -46,7 +46,7 @@ class BubbleCallbackListener(bubbleService: BubbleService) : FloatingBubble.List
 
     /** This method is used to put the coordinates in the intent as extras. */
     private fun putCoordinatesInIntent(intent: Intent, x: Float, y: Float) {
-        intent.putExtra(Constants.X_AXIS_VALUE, x)
-        intent.putExtra(Constants.Y_AXIS_VALUE, y)
+        intent.putExtra(Constants.X_AXIS_VALUE, Helpers.pxToDp(x.toDouble()))
+        intent.putExtra(Constants.Y_AXIS_VALUE, Helpers.pxToDp(y.toDouble()))
     }
 }

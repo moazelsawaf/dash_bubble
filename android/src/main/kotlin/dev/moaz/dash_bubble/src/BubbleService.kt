@@ -72,8 +72,8 @@ class BubbleService : FloatingBubbleService() {
             )
             .bubbleStyle(null)
             .startLocation(
-                bubbleOptions.startLocationX!!.toInt(),
-                bubbleOptions.startLocationY!!.toInt()
+                Helpers.dpToPx(bubbleOptions.startLocationX!!) .toInt(),
+                Helpers.dpToPx(bubbleOptions.startLocationY!!).toInt()
             )
             .enableAnimateToEdge(bubbleOptions.enableAnimateToEdge!!)
             .closeBubble(

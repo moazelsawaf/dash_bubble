@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                       bubbleIcon: 'github_bubble',
                       // closeIcon: 'github_bubble',
                       startLocationX: 0,
-                      startLocationY: 200,
+                      startLocationY: 100,
                       bubbleSize: 60,
                       opacity: 1,
                       enableClose: true,
@@ -113,15 +113,18 @@ class HomeScreen extends StatelessWidget {
                     ),
                     onTapDown: (x, y) => _logMessage(
                       context: context,
-                      message: 'Bubble Tapped Down on: $x, $y',
+                      message:
+                          'Bubble Tapped Down on: ${_getRoundedCoordinatesAsString(x, y)}',
                     ),
                     onTapUp: (x, y) => _logMessage(
                       context: context,
-                      message: 'Bubble Tapped Up on: $x, $y',
+                      message:
+                          'Bubble Tapped Up on: ${_getRoundedCoordinatesAsString(x, y)}',
                     ),
                     onMove: (x, y) => _logMessage(
                       context: context,
-                      message: 'Bubble Moved to: $x, $y',
+                      message:
+                          'Bubble Moved to: ${_getRoundedCoordinatesAsString(x, y)}',
                     ),
                   );
                 },
@@ -258,5 +261,9 @@ class HomeScreen extends StatelessWidget {
       status: SnackBarStatus.success,
       message: message,
     );
+  }
+
+  String _getRoundedCoordinatesAsString(double x, double y) {
+    return '${x.toStringAsFixed(2)}, ${y.toStringAsFixed(2)}';
   }
 }
