@@ -64,13 +64,7 @@ class BubbleManager(private val activity: Activity) {
         val intent = Intent(activity, BubbleService::class.java)
         intent.putExtra(Constants.BUBBLE_OPTIONS_INTENT_EXTRA, bubbleOptions)
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            // For android version lower than 8 (android O)
-            activity.startService(intent)
-        } else {
-            // For android 8 and higher
-            startForegroundService(activity, intent)
-        }
+        startForegroundService(activity, intent)
 
         return true
     }
