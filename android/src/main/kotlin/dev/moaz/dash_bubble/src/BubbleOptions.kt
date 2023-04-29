@@ -1,7 +1,7 @@
 package dev.moaz.dash_bubble.src
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /** BubbleOptions is the class that contains the options for the bubble.
  * @param notificationTitle The title of the notification that will be shown when the bubble is running.
