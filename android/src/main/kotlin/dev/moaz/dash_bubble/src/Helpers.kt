@@ -83,13 +83,5 @@ class Helpers {
         fun pxToDp(px: Double): Double {
             return px / Resources.getSystem().displayMetrics.density
         }
-
-        /** Convert density-independent pixels (dp) to pixels (px).
-         * @param dp The dp value to convert.
-         * @return The converted px value.
-         */
-        fun dpToPx(dp: Double): Double {
-            return dp * Resources.getSystem().displayMetrics.density
-        }
     }
 }
