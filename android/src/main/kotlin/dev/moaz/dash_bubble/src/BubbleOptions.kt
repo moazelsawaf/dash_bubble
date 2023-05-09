@@ -7,6 +7,9 @@ import kotlinx.parcelize.Parcelize
  * @param notificationTitle The title of the notification that will be shown when the bubble is running.
  * @param notificationText The text of the notification that will be shown when the bubble is running.
  * @param notificationIcon The icon of the notification that will be shown when the bubble is running.
+ * @param notificationId The id of the notification that will be shown when the bubble is running.
+ * @param notificationChannelId The channel id of the notification that will be shown when the bubble is running.
+ * @param notificationChannelName The channel name of the notification that will be shown when the bubble is running.
  * @param bubbleIcon The icon of the bubble.
  * @param closeIcon The icon of the close button.
  * @param startLocationX The x coordinate of the bubble.
@@ -25,6 +28,9 @@ data class BubbleOptions(
     val notificationTitle: String?,
     val notificationText: String?,
     val notificationIcon: String?,
+    val notificationId: Int?,
+    val notificationChannelId: String?,
+    val notificationChannelName: String?,
     val bubbleIcon: String?,
     val closeIcon: String?,
     val startLocationX: Double?,

@@ -40,6 +40,15 @@ class BubbleService : FloatingBubbleService() {
         return null;
     }
 
+    /** Defines the notification id */
+    override fun notificationId() = bubbleOptions.notificationId!!
+
+    /** Defines the notification channel id */
+    override fun channelId() = bubbleOptions.notificationChannelId!!
+
+    /** Defines the notification channel name */
+    override fun channelName() = bubbleOptions.notificationChannelName!!
+
     /** This method defines the main setup of the bubble. */
     override fun setupBubble(action: FloatingBubble.Action): FloatingBubble.Builder {
         val bubbleIcon = Helpers.getDrawableId(

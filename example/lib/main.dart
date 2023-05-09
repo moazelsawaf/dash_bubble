@@ -103,6 +103,9 @@ class HomeScreen extends StatelessWidget {
                     options: BubbleOptions(
                       notificationTitle: 'Dash Bubble Playground',
                       notificationText: 'Dash Bubble service is running',
+                      notificationId: 1,
+                      notificationChannelId: 'dash_bubble_notification',
+                      notificationChannelName: 'Dash Bubble Notification',
                       // notificationIcon: 'github_bubble',
                       bubbleIcon: 'github_bubble',
                       // closeIcon: 'github_bubble',
