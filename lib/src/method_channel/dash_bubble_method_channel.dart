@@ -41,14 +41,26 @@ class MethodChannelDashBubble extends DashBubblePlatform {
 
   /// Invokes the method channel to request permission to draw over other apps.
   @override
-  Future<bool> requestPermission() async {
-    return (await _invokeMethod(Constants.requestPermission));
+  Future<bool> requestOverlayPermission() async {
+    return (await _invokeMethod(Constants.requestOverlayPermission));
   }
 
   /// Invokes the method channel to check if the permission to draw over other apps is granted.
   @override
-  Future<bool> hasPermission() async {
-    return (await _invokeMethod(Constants.hasPermission));
+  Future<bool> hasOverlayPermission() async {
+    return (await _invokeMethod(Constants.hasOverlayPermission));
+  }
+
+  /// Invokes the method channel to request post notifications permission.
+  @override
+  Future<bool> requestPostNotificationsPermission() async {
+    return (await _invokeMethod(Constants.requestPostNotificationsPermission));
+  }
+
+  /// Invokes the method channel to check if the post notifications permission is granted.
+  @override
+  Future<bool> hasPostNotificationsPermission() async {
+    return (await _invokeMethod(Constants.hasPostNotificationsPermission));
   }
 
   /// Invokes the method channel to check if the bubble is currently running.

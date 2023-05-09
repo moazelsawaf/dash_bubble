@@ -25,24 +25,47 @@ class DashBubble {
   /// Singleton Pattern
   static final DashBubble instance = DashBubble._();
 
-  /// Request permission to draw over other apps.
+  /// Request permission to draw over other apps (overlay permission).
   ///
   /// Returns `true` if the permission is granted, `false` otherwise.
   ///
   /// If the permission is already granted, this method will return `true` without asking the user.
   ///
   /// In Android versions prior to `Android 6.0 (M)`, this method will return `true` without asking the user.
-  Future<bool> requestPermission() {
-    return DashBubblePlatform.instance.requestPermission();
+  Future<bool> requestOverlayPermission() {
+    return DashBubblePlatform.instance.requestOverlayPermission();
   }
 
-  /// Check if the permission to draw over other apps is granted.
+  /// Check if draw over other apps (overlay) permission is granted or not.
   ///
   /// Returns `true` if the permission is granted, `false` otherwise.
   ///
   /// In Android versions prior to `Android 6.0 (M)`, this method will always return `true`.
-  Future<bool> hasPermission() {
-    return DashBubblePlatform.instance.hasPermission();
+  Future<bool> hasOverlayPermission() {
+    return DashBubblePlatform.instance.hasOverlayPermission();
+  }
+
+  /// Request post notifications permission.
+  ///
+  /// Returns `true` if the permission is granted, `false` otherwise.
+  ///
+  /// The user can be asked for the permission only twice, if the user denied
+  /// the permission twice, the function would not be able to ask for the
+  /// permission anymore and it will return false, however, the user can still
+  /// grant the permission manually from the app settings page.
+  ///
+  /// In Android versions prior to `Android 13 (Tiramisu)`, this method will return `true` without asking the user.
+  Future<bool> requestPostNotificationsPermission() {
+    return DashBubblePlatform.instance.requestPostNotificationsPermission();
+  }
+
+  /// Check if the post notifications permission is granted or not.
+  ///
+  /// Returns `true` if the permission is granted, `false` otherwise.
+  ///
+  /// In Android versions prior to `Android 13 (Tiramisu)`, this method will always return `true`.
+  Future<bool> hasPostNotificationsPermission() {
+    return DashBubblePlatform.instance.hasPostNotificationsPermission();
   }
 
   /// Check if the bubble is currently running.

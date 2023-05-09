@@ -10,17 +10,27 @@ class MockDashBubblePlatform
     with MockPlatformInterfaceMixin
     implements DashBubblePlatform {
   @override
-  Future<bool> hasPermission() {
+  Future<bool> requestOverlayPermission() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> hasOverlayPermission() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> requestPostNotificationsPermission() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> hasPostNotificationsPermission() {
     throw UnimplementedError();
   }
 
   @override
   Future<bool> isRunning() {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<bool> requestPermission() {
     throw UnimplementedError();
   }
 

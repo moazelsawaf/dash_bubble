@@ -26,13 +26,27 @@ abstract class DashBubblePlatform extends PlatformInterface {
   }
 
   /// Request permission to draw over other apps.
-  Future<bool> requestPermission() async {
-    throw UnimplementedError('requestPermission() has not been implemented.');
+  Future<bool> requestOverlayPermission() async {
+    throw UnimplementedError(
+        'requestOverlayPermission() has not been implemented.');
   }
 
   /// Check if the permission to draw over other apps is granted.
-  Future<bool> hasPermission() async {
-    throw UnimplementedError('hasPermission() has not been implemented.');
+  Future<bool> hasOverlayPermission() async {
+    throw UnimplementedError(
+        'hasOverlayPermission() has not been implemented.');
+  }
+
+  /// Request post notifications permission.
+  Future<bool> requestPostNotificationsPermission() async {
+    throw UnimplementedError(
+        'requestPostNotificationsPermission() has not been implemented.');
+  }
+
+  /// Check if the post notifications permission is granted.
+  Future<bool> hasPostNotificationsPermission() async {
+    throw UnimplementedError(
+        'hasPostNotificationsPermission() has not been implemented.');
   }
 
   /// Check if the bubble is currently running.

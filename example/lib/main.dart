@@ -72,13 +72,23 @@ class HomeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ElevatedButton(
-                onPressed: () => _requestPermission(context),
-                child: const Text('Request Permission'),
+                onPressed: () => _requestOverlayPermission(context),
+                child: const Text('Request Overlay Permission'),
               ),
               const SizedBox(height: 24),
               ElevatedButton(
-                onPressed: () => _hasPermission(context),
-                child: const Text('Has Permission?'),
+                onPressed: () => _hasOverlayPermission(context),
+                child: const Text('Has Overlay Permission?'),
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton(
+                onPressed: () => _requestPostNotificationsPermission(context),
+                child: const Text('Request Post Notifications Permission'),
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton(
+                onPressed: () => _hasPostNotificationsPermission(context),
+                child: const Text('Has Post Notifications Permission?'),
               ),
               const SizedBox(height: 24),
               ElevatedButton(
@@ -162,34 +172,73 @@ class HomeScreen extends StatelessWidget {
     }
   }
 
-  Future<void> _requestPermission(BuildContext context) async {
+  Future<void> _requestOverlayPermission(BuildContext context) async {
     await _runMethod(
       context,
       () async {
-        final isGranted = await DashBubble.instance.requestPermission();
+        final isGranted = await DashBubble.instance.requestOverlayPermission();
 
         SnackBars.show(
           context: context,
           status: SnackBarStatus.success,
-          message:
-              isGranted ? 'Permission Granted' : 'Permission is not Granted',
+          message: isGranted
+              ? 'Overlay Permission Granted'
+              : 'Overlay Permission is not Granted',
         );
       },
     );
   }
 
-  Future<void> _hasPermission(BuildContext context) async {
+  Future<void> _hasOverlayPermission(BuildContext context) async {
     await _runMethod(
       context,
       () async {
-        final hasPermission = await DashBubble.instance.hasPermission();
+        final hasPermission = await DashBubble.instance.hasOverlayPermission();
 
         SnackBars.show(
           context: context,
           status: SnackBarStatus.success,
           message: hasPermission
-              ? 'Permission Granted'
-              : 'Permission is not Granted',
+              ? 'Overlay Permission Granted'
+              : 'Overlay Permission is not Granted',
+        );
+      },
+    );
+  }
+
+  Future<void> _requestPostNotificationsPermission(
+    BuildContext context,
+  ) async {
+    await _runMethod(
+      context,
+      () async {
+        final isGranted =
+            await DashBubble.instance.requestPostNotificationsPermission();
+
+        SnackBars.show(
+          context: context,
+          status: SnackBarStatus.success,
+          message: isGranted
+              ? 'Post Notifications Permission Granted'
+              : 'Post Notifications Permission is not Granted',
+        );
+      },
+    );
+  }
+
+  Future<void> _hasPostNotificationsPermission(BuildContext context) async {
+    await _runMethod(
+      context,
+      () async {
+        final hasPermission =
+            await DashBubble.instance.hasPostNotificationsPermission();
+
+        SnackBars.show(
+          context: context,
+          status: SnackBarStatus.success,
+          message: hasPermission
+              ? 'Post Notifications Permission Granted'
+              : 'Post Notifications Permission is not Granted',
         );
       },
     );

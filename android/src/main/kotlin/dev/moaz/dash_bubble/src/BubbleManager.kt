@@ -1,43 +1,90 @@
 package dev.moaz.dash_bubble.src
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.content.ContextCompat.startForegroundService
 import com.torrydo.floatingbubbleview.FloatingBubbleService
 
 /** BubbleManager is the main class that you will use to manage the bubble. */
 class BubbleManager(private val activity: Activity) {
 
-    /** Request permission to draw over other apps.
+    /** Request permission to draw over other apps (overlay permission).
      * @return true if permission is granted, null if the permission is being requested.
      *
      * If the permission is not granted, the user will be redirected to the settings page to grant the permission and it will return null.
      *
      * If the current android version is lower than 6 (android M), it will return true immediately.
      */
-    fun requestPermission(): Boolean? {
-        if (hasPermission()) return true
+    fun requestOverlayPermission(): Boolean? {
+        if (hasOverlayPermission()) return true
 
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + activity.packageName))
-            activity.startActivityForResult(intent, Constants.PERMISSION_REQUEST_CODE)
+            val intent = Intent(
+                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                Uri.parse("package:" + activity.packageName)
+            )
+            activity.startActivityForResult(intent, Constants.OVERLAY_PERMISSION_REQUEST_CODE)
             null
         } else {
             true
         }
     }
 
-    /** Check if the permission is granted or not.
+    /** Check if draw over other apps (overlay) permission is granted or not.
      * @return true if permission is granted, false if not.
      *
      * If the current android version is lower than 6 (android M), it will return true immediately.
      */
-    fun hasPermission(): Boolean {
+    fun hasOverlayPermission(): Boolean {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Settings.canDrawOverlays(activity)
+        } else true
+    }
+
+    /** Request post notifications permission.
+     * @return true if permission is granted, null if the permission is being requested.
+     *
+     * If the permission is not granted, the user will be asked to grant the permission.
+     *
+     * The user can be asked for the permission only twice, if the user denied the permission twice,
+     * the function would not be able to ask for the permission anymore and it will return false,
+     * however, the user can still grant the permission manually from the app settings page.
+     *
+     * If the current android version is lower than 13 (android Tiramisu), it will return true without asking the user.
+     */
+    fun requestPostNotificationsPermission(): Boolean? {
+        if (hasPostNotificationsPermission()) return true
+
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requestPermissions(
+                activity,
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                Constants.POST_NOTIFICATIONS_PERMISSION_REQUEST_CODE
+            )
+            null
+        } else {
+            true
+        }
+    }
+
+    /** Check if the post notifications permission is granted or not.
+     * @return true if permission is granted, false if not.
+     *
+     * If the current android version is lower than 13 (android Tiramisu), it will return true immediately.
+     */
+    fun hasPostNotificationsPermission(): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.checkSelfPermission(
+                activity,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
         } else true
     }
 
@@ -56,8 +103,8 @@ class BubbleManager(private val activity: Activity) {
      *
      * If the permission is not granted, it will return false.
      */
-    fun startBubble(bubbleOptions: BubbleOptions) : Boolean {
-        if (!hasPermission()) return false
+    fun startBubble(bubbleOptions: BubbleOptions): Boolean {
+        if (!hasOverlayPermission()) return false
 
         if (isRunning()) return false
 
@@ -74,7 +121,7 @@ class BubbleManager(private val activity: Activity) {
      *
      * If the bubble is not running, it will return false.
      */
-    fun stopBubble() : Boolean {
+    fun stopBubble(): Boolean {
         if (!FloatingBubbleService.isRunning()) return false
 
         val intent = Intent(activity, BubbleService::class.java)

@@ -12,8 +12,12 @@ class Constants {
   static const yAxisValue = 'yAxisValue';
 
   // Native Methods Names
-  static const requestPermission = 'requestPermission';
-  static const hasPermission = 'hasPermission';
+  static const requestOverlayPermission = 'requestOverlayPermission';
+  static const hasOverlayPermission = 'hasOverlayPermission';
+  static const requestPostNotificationsPermission =
+      'requestPostNotificationsPermission';
+  static const hasPostNotificationsPermission =
+      'hasPostNotificationsPermission';
   static const isRunning = 'isRunning';
   static const startBubble = 'startBubble';
   static const stopBubble = 'stopBubble';

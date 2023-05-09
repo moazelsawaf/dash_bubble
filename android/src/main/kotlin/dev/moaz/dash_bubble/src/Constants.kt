@@ -4,7 +4,8 @@ package dev.moaz.dash_bubble.src
 class Constants {
     companion object {
         const val METHOD_CHANNEL = "dash_bubble"
-        const val PERMISSION_REQUEST_CODE = 7000
+        const val OVERLAY_PERMISSION_REQUEST_CODE = 7000
+        const val POST_NOTIFICATIONS_PERMISSION_REQUEST_CODE = 8000
         const val BUBBLE_OPTIONS_INTENT_EXTRA = "bubbleOptionsIntentExtra"
         const val ERROR_TAG = "DASH_BUBBLE"
 
@@ -17,8 +18,10 @@ class Constants {
         const val Y_AXIS_VALUE = "yAxisValue"
 
         // Methods
-        const val REQUEST_PERMISSION = "requestPermission"
-        const val HAS_PERMISSION = "hasPermission"
+        const val REQUEST_OVERLAY_PERMISSION = "requestOverlayPermission"
+        const val HAS_OVERLAY_PERMISSION = "hasOverlayPermission"
+        const val REQUEST_POST_NOTIFICATIONS_PERMISSION = "requestPostNotificationsPermission"
+        const val HAS_POST_NOTIFICATIONS_PERMISSION = "hasPostNotificationsPermission"
         const val IS_RUNNING = "isRunning"
         const val START_BUBBLE = "startBubble"
         const val STOP_BUBBLE = "stopBubble"
