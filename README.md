@@ -62,6 +62,7 @@ The plugin uses these two permissions but **you don't need to add them** to your
 ```xml
 <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 ```
 
 ## 💻 Usage
@@ -85,8 +86,8 @@ DashBubble.instance.startBubble()
 
 ### Notes
 
-- All the methods are asynchronous and has a return type of `Future<bool>`.
-- All the methods returns `false` if the platform is not **Android**.
+* All the methods are asynchronous and has a return type of `Future<bool>`.
+* All the methods returns `false` if the platform is not **Android**.
 
 | Method | Description | Parameters | Behavior | Notes |
 | --- | --- | --- | --- | --- |
@@ -102,9 +103,6 @@ DashBubble.instance.startBubble()
 
 | Option | Description | Default | Notes |
 | --- | --- | --- | --- |
-| `notificationTitle` | The title of the service notification | `null` | If not provided, the title will be the app name |
-| `notificationText` | The text of the service notification | `null` | If not provided, there will be no notification body |
-| `notificationIcon` | The icon of the service notification | `null` | The icon is set as an image file placed inside `android\app\src\main\res\drawable\` and the value of the parameter should be the the file name **without the extension**<br><br>If not provided, the icon will be the plugin icon |
 | `bubbleIcon` | The icon of the bubble | `null` | The icon is set as an image file placed inside `android\app\src\main\res\drawable\` and the value of the parameter should be the the file name **without the extension**<br><br>If not provided, the icon will be the plugin icon |
 | `closeIcon` | The icon of the close button | `null` | The icon is set as an image file placed inside `android\app\src\main\res\drawable\` and the value of the parameter should be the the file name **without the extension**<br><br>If not provided, there will be a default close icon |
 | `startLocationX` | The initial starting position of the bubble on the x axis | `0` | - |
@@ -129,13 +127,40 @@ DashBubble.instance.startBubble()
 | `onTapUp` | Called when the bubble is tapped up (released) | `double x`<br>`double y` | The parameters `x` and `y` are the new coordinates of the bubble after it is tapped up |
 | `onMove` | Called when the bubble is moved | `double x`<br>`double y` | The parameters `x` and `y` are the new coordinates of the bubble after it is moved |
 
+## 🔔 Service Notification
+
+The service notification is a non-dismissible notification that is shown when the bubble is running to keep the service alive.
+
+The notification is shown automatically when the bubble is started and hidden automatically when the bubble is stopped.
+
+*Currently, their is no way to disable the notification.*
+
+**Note**: Starting from `Android 13 (Tiramisu)`, the **POST_NOTIFICATIONS** permission must be granted to show the notification, however, you don't need to add the permission to the `AndroidManifest.xml` file because it is already added by the plugin, but you need to request it at the runtime, otherwise the notification will not be shown.
+
+This permission can be requested by calling `requestPostNotificationsPermission()` method.
+
+### Customization Options
+
+The service notification can be optionally customized by passing a `notificationOptions` parameter to the `startBubble()` method.
+
+**Note**: All the options are optional and you can pass only the options you want to customize. Here is a list of the available options in the `notificationOptions` parameter:
+
+| Option | Description | Default | Notes |
+| --- | --- | --- | --- |
+| `id` | The id of the service notification | `101` | - |
+| `title` | The title of the service notification | `null` | If not provided, the title will be the app name |
+| `body` | The body of the service notification | `null` | If not provided, there will be no notification body |
+| `icon` | The icon of the service notification | `null` | The icon is set as an image file placed inside `android\app\src\main\res\drawable\` and the value of the parameter should be the the file name **without the extension**<br><br>If not provided, the icon will be the plugin icon |
+| `channelId` | The channel id of the service notification | `bubble_notification` | - |
+| `channelName` | The channel name of the service notification | `Bubble Notification` | - |
+  
 ## ✅ Roadmap
 
-- [ ] Add Tests 🧪
-- [ ] Implement a ready-to-use `AppBubble` which starts automatically when the app is on the background and stops when the app is on the foreground and has the ability to bring the app to the foreground when the bubble is tapped 📱
-- [ ] Ability to pass a `Widget` as the `bubbleIcon` and `closeIcon` 💪🏻
-- [ ] Implement the `ExpandableView` feature in the original library ⚡
-- [x] Implement the the rest of the available callbacks in the original library `onMove(x,y)`, `onUp(x,y)`, and `onDown(x,y)` 🔗
+* [ ] Add Tests 🧪
+* [ ] Implement a ready-to-use `AppBubble` which starts automatically when the app is on the background and stops when the app is on the foreground and has the ability to bring the app to the foreground when the bubble is tapped 📱
+* [ ] Ability to pass a `Widget` as the `bubbleIcon` and `closeIcon` 💪🏻
+* [ ] Implement the `ExpandableView` feature in the original library ⚡
+* [x] Implement the the rest of the available callbacks in the original library `onMove(x,y)`, `onUp(x,y)`, and `onDown(x,y)` 🔗
 
 ## 💪🏻 Contribution Guide
 
