@@ -1,25 +1,7 @@
-import 'enums/enums.dart';
+import '../enums/enums.dart';
 
 /// [BubbleOptions] is a class that contains all the customizable options for the bubble passed to the [DashBubble.startBubble] method.
 class BubbleOptions {
-  /// The title of the service notification.
-  final String? notificationTitle;
-
-  /// The text of the service notification.
-  final String? notificationText;
-
-  /// The icon of the service notification.
-  final String? notificationIcon;
-
-  // The id of the service notification.
-  final int notificationId;
-
-  // The channel id of the service notification.
-  final String notificationChannelId;
-
-  // The channel name of the service notification.
-  final String notificationChannelName;
-
   /// The icon of the bubble.
   final String? bubbleIcon;
 
@@ -56,12 +38,6 @@ class BubbleOptions {
   final bool keepAliveWhenAppExit;
 
   BubbleOptions({
-    this.notificationTitle,
-    this.notificationText,
-    this.notificationIcon,
-    this.notificationId = 101,
-    this.notificationChannelId = 'bubble_notification',
-    this.notificationChannelName = 'Bubble Notification',
     this.bubbleIcon,
     this.closeIcon,
     this.startLocationX = 0,
@@ -85,12 +61,6 @@ class BubbleOptions {
 
   Map<String, dynamic> toMap() {
     return {
-      'notificationTitle': notificationTitle,
-      'notificationText': notificationText,
-      'notificationIcon': notificationIcon,
-      'notificationId': notificationId,
-      'notificationChannelId': notificationChannelId,
-      'notificationChannelName': notificationChannelName,
       'bubbleIcon': bubbleIcon,
       'closeIcon': closeIcon,
       'startLocationX': startLocationX,

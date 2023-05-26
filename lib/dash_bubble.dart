@@ -12,9 +12,9 @@
 library dash_bubble;
 
 import 'src/method_channel/dash_bubble_platform_interface.dart';
-import 'src/bubble_options.dart';
+import 'src/models/models.dart';
 
-export 'src/bubble_options.dart';
+export 'src/models/models.dart';
 export 'src/enums/enums.dart';
 
 /// The main class of the plugin.
@@ -98,14 +98,16 @@ class DashBubble {
   /// [onMove] is an optional callback that will be called when the bubble is moved, it will receive the new `x` and `y` coordinates of the bubble after it is moved.
   ///
   Future<bool> startBubble({
-    BubbleOptions? options,
+    BubbleOptions? bubbleOptions,
+    NotificationOptions? notificationOptions,
     Function()? onTap,
     Function(double x, double y)? onTapDown,
     Function(double x, double y)? onTapUp,
     Function(double x, double y)? onMove,
   }) {
     return DashBubblePlatform.instance.startBubble(
-      options: options,
+      bubbleOptions: bubbleOptions,
+      notificationOptions: notificationOptions,
       onTap: onTap,
       onTapDown: onTapDown,
       onTapUp: onTapUp,

@@ -1,15 +1,10 @@
 package dev.moaz.dash_bubble.src
 
 import android.os.Parcelable
+import io.flutter.plugin.common.MethodCall
 import kotlinx.parcelize.Parcelize
 
 /** BubbleOptions is the class that contains the options for the bubble.
- * @param notificationTitle The title of the notification that will be shown when the bubble is running.
- * @param notificationText The text of the notification that will be shown when the bubble is running.
- * @param notificationIcon The icon of the notification that will be shown when the bubble is running.
- * @param notificationId The id of the notification that will be shown when the bubble is running.
- * @param notificationChannelId The channel id of the notification that will be shown when the bubble is running.
- * @param notificationChannelName The channel name of the notification that will be shown when the bubble is running.
  * @param bubbleIcon The icon of the bubble.
  * @param closeIcon The icon of the close button.
  * @param startLocationX The x coordinate of the bubble.
@@ -25,12 +20,6 @@ import kotlinx.parcelize.Parcelize
  */
 @Parcelize
 data class BubbleOptions(
-    val notificationTitle: String?,
-    val notificationText: String?,
-    val notificationIcon: String?,
-    val notificationId: Int?,
-    val notificationChannelId: String?,
-    val notificationChannelName: String?,
     val bubbleIcon: String?,
     val closeIcon: String?,
     val startLocationX: Double?,
@@ -43,4 +32,28 @@ data class BubbleOptions(
     val enableAnimateToEdge: Boolean?,
     val enableBottomShadow: Boolean?,
     val keepAliveWhenAppExit: Boolean?,
-) : Parcelable
+) : Parcelable {
+    companion object {
+        /**
+         * Get the bubble options from the method call.
+         * @param call The method call.
+         * @return The bubble options.
+         */
+        fun fromMethodCall(call: MethodCall): BubbleOptions {
+            return BubbleOptions(
+                call.argument(Constants.BUBBLE_ICON),
+                call.argument(Constants.CLOSE_ICON),
+                call.argument(Constants.START_LOCATION_X),
+                call.argument(Constants.START_LOCATION_Y),
+                call.argument(Constants.BUBBLE_SIZE),
+                call.argument(Constants.OPACITY),
+                call.argument(Constants.ENABLE_CLOSE),
+                call.argument(Constants.CLOSE_BEHAVIOR),
+                call.argument(Constants.DISTANCE_TO_CLOSE),
+                call.argument(Constants.ENABLE_ANIMATE_TO_EDGE),
+                call.argument(Constants.ENABLE_BOTTOM_SHADOW),
+                call.argument(Constants.KEEP_ALIVE_WHEN_APP_EXIT)
+            )
+        }
+    }
+}

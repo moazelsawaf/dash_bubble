@@ -32,34 +32,6 @@ class Helpers {
         }
 
         /**
-         * Get the bubble options from the method call.
-         * @param call The method call.
-         * @return The bubble options.
-         */
-        fun getBubbleOptionsFromMethodCall(call: MethodCall): BubbleOptions {
-            return BubbleOptions(
-                call.argument(Constants.NOTIFICATION_TITLE),
-                call.argument(Constants.NOTIFICATION_TEXT),
-                call.argument(Constants.NOTIFICATION_ICON),
-                call.argument(Constants.NOTIFICATION_ID),
-                call.argument(Constants.NOTIFICATION_CHANNEL_ID),
-                call.argument(Constants.NOTIFICATION_CHANNEL_NAME),
-                call.argument(Constants.BUBBLE_ICON),
-                call.argument(Constants.CLOSE_ICON),
-                call.argument(Constants.START_LOCATION_X),
-                call.argument(Constants.START_LOCATION_Y),
-                call.argument(Constants.BUBBLE_SIZE),
-                call.argument(Constants.OPACITY),
-                call.argument(Constants.ENABLE_CLOSE),
-                call.argument(Constants.CLOSE_BEHAVIOR),
-                call.argument(Constants.DISTANCE_TO_CLOSE),
-                call.argument(Constants.ENABLE_ANIMATE_TO_EDGE),
-                call.argument(Constants.ENABLE_BOTTOM_SHADOW),
-                call.argument(Constants.KEEP_ALIVE_WHEN_APP_EXIT)
-            )
-        }
-
-        /**
          * Get the drawable id from the name of the drawable.
          * @param context The context of the application.
          * @param name The name of the drawable.

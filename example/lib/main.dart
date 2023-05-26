@@ -100,12 +100,7 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   _startBubble(
                     context,
-                    options: BubbleOptions(
-                      notificationTitle: 'Dash Bubble Playground',
-                      notificationText: 'Dash Bubble service is running',
-                      notificationId: 1,
-                      notificationChannelId: 'dash_bubble_notification',
-                      notificationChannelName: 'Dash Bubble Notification',
+                    bubbleOptions: BubbleOptions(
                       // notificationIcon: 'github_bubble',
                       bubbleIcon: 'github_bubble',
                       // closeIcon: 'github_bubble',
@@ -119,6 +114,13 @@ class HomeScreen extends StatelessWidget {
                       enableAnimateToEdge: true,
                       enableBottomShadow: true,
                       keepAliveWhenAppExit: false,
+                    ),
+                    notificationOptions: NotificationOptions(
+                      id: 1,
+                      title: 'Dash Bubble Playground',
+                      body: 'Dash Bubble service is running',
+                      channelId: 'dash_bubble_notification',
+                      channelName: 'Dash Bubble Notification',
                     ),
                     onTap: () => _logMessage(
                       context: context,
@@ -264,7 +266,8 @@ class HomeScreen extends StatelessWidget {
 
   Future<void> _startBubble(
     BuildContext context, {
-    BubbleOptions? options,
+    BubbleOptions? bubbleOptions,
+    NotificationOptions? notificationOptions,
     VoidCallback? onTap,
     Function(double x, double y)? onTapDown,
     Function(double x, double y)? onTapUp,
@@ -274,7 +277,8 @@ class HomeScreen extends StatelessWidget {
       context,
       () async {
         final hasStarted = await DashBubble.instance.startBubble(
-          options: options,
+          bubbleOptions: bubbleOptions,
+          notificationOptions: notificationOptions,
           onTap: onTap,
           onTapDown: onTapDown,
           onTapUp: onTapUp,

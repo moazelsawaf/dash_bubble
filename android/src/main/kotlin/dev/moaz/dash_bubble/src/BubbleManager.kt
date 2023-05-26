@@ -103,13 +103,17 @@ class BubbleManager(private val activity: Activity) {
      *
      * If the permission is not granted, it will return false.
      */
-    fun startBubble(bubbleOptions: BubbleOptions): Boolean {
+    fun startBubble(
+        bubbleOptions: BubbleOptions,
+        notificationOptions: NotificationOptions
+    ): Boolean {
         if (!hasOverlayPermission()) return false
 
         if (isRunning()) return false
 
         val intent = Intent(activity, BubbleService::class.java)
         intent.putExtra(Constants.BUBBLE_OPTIONS_INTENT_EXTRA, bubbleOptions)
+        intent.putExtra(Constants.NOTIFICATION_OPTIONS_INTENT_EXTRA, notificationOptions)
 
         startForegroundService(activity, intent)
 

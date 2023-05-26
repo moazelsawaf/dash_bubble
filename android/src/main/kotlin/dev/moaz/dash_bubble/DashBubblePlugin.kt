@@ -6,8 +6,10 @@ import android.content.IntentFilter
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import dev.moaz.dash_bubble.src.BroadcastListener
 import dev.moaz.dash_bubble.src.BubbleManager
+import dev.moaz.dash_bubble.src.BubbleOptions
 import dev.moaz.dash_bubble.src.Constants
 import dev.moaz.dash_bubble.src.Helpers
+import dev.moaz.dash_bubble.src.NotificationOptions
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -64,7 +66,10 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                 Constants.HAS_POST_NOTIFICATIONS_PERMISSION -> result.success(bubbleManager.hasPostNotificationsPermission())
                 Constants.IS_RUNNING -> result.success(bubbleManager.isRunning())
                 Constants.START_BUBBLE -> result.success(
-                    bubbleManager.startBubble(Helpers.getBubbleOptionsFromMethodCall(call))
+                    bubbleManager.startBubble(
+                        BubbleOptions.fromMethodCall(call),
+                        NotificationOptions.fromMethodCall(call),
+                    )
                 )
                 Constants.STOP_BUBBLE -> result.success(bubbleManager.stopBubble())
                 else -> result.notImplemented()
@@ -114,7 +119,7 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     override fun onDetachedFromActivityForConfigChanges() {
         activityBinding?.removeActivityResultListener(this);
         activityBinding?.removeRequestPermissionsResultListener(this)
-        
+
         activityBinding = null
     }
 

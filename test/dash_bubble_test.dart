@@ -36,7 +36,8 @@ class MockDashBubblePlatform
 
   @override
   Future<bool> startBubble({
-    BubbleOptions? options,
+    BubbleOptions? bubbleOptions,
+    NotificationOptions? notificationOptions,
     VoidCallback? onTap,
     Function(double x, double y)? onTapDown,
     Function(double x, double y)? onTapUp,

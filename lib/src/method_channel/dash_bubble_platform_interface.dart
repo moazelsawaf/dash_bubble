@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'dash_bubble_method_channel.dart';
-import '../bubble_options.dart';
+import '../models/models.dart';
 
 abstract class DashBubblePlatform extends PlatformInterface {
   /// Constructs a DashBubblePlatform.
@@ -56,7 +56,8 @@ abstract class DashBubblePlatform extends PlatformInterface {
 
   /// Start the bubble.
   Future<bool> startBubble({
-    BubbleOptions? options,
+    BubbleOptions? bubbleOptions,
+    NotificationOptions? notificationOptions,
     VoidCallback? onTap,
     Function(double x, double y)? onTapDown,
     Function(double x, double y)? onTapUp,

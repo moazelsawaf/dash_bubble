@@ -7,6 +7,7 @@ class Constants {
         const val OVERLAY_PERMISSION_REQUEST_CODE = 7000
         const val POST_NOTIFICATIONS_PERMISSION_REQUEST_CODE = 8000
         const val BUBBLE_OPTIONS_INTENT_EXTRA = "bubbleOptionsIntentExtra"
+        const val NOTIFICATION_OPTIONS_INTENT_EXTRA = "notificationOptionsIntentExtra"
         const val ERROR_TAG = "DASH_BUBBLE"
 
         // Bubble Callbacks
@@ -27,12 +28,6 @@ class Constants {
         const val STOP_BUBBLE = "stopBubble"
 
         // Bubble Options Arguments
-        const val NOTIFICATION_TITLE = "notificationTitle"
-        const val NOTIFICATION_TEXT = "notificationText"
-        const val NOTIFICATION_ICON = "notificationIcon"
-        const val NOTIFICATION_ID = "notificationId"
-        const val NOTIFICATION_CHANNEL_ID = "notificationChannelId"
-        const val NOTIFICATION_CHANNEL_NAME = "notificationChannelName"
         const val BUBBLE_ICON = "bubbleIcon"
         const val CLOSE_ICON = "closeIcon"
         const val START_LOCATION_X = "startLocationX"
@@ -45,5 +40,13 @@ class Constants {
         const val ENABLE_ANIMATE_TO_EDGE = "enableAnimateToEdge"
         const val ENABLE_BOTTOM_SHADOW = "enableBottomShadow"
         const val KEEP_ALIVE_WHEN_APP_EXIT = "keepAliveWhenAppExit"
+
+        // Notification Options Arguments
+        const val NOTIFICATION_ID = "notificationId"
+        const val NOTIFICATION_TITLE = "notificationTitle"
+        const val NOTIFICATION_BODY = "notificationBody"
+        const val NOTIFICATION_ICON = "notificationIcon"
+        const val NOTIFICATION_CHANNEL_ID = "notificationChannelId"
+        const val NOTIFICATION_CHANNEL_NAME = "notificationChannelName"
     }
 }

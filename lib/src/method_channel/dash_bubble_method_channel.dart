@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 
 import 'dash_bubble_platform_interface.dart';
 import '../constants.dart';
-import '../bubble_options.dart';
+import '../models/models.dart';
 
 /// An implementation of [DashBubblePlatform] that uses method channels.
 class MethodChannelDashBubble extends DashBubblePlatform {
@@ -72,7 +72,8 @@ class MethodChannelDashBubble extends DashBubblePlatform {
   /// Invokes the method channel to start the bubble.
   @override
   Future<bool> startBubble({
-    BubbleOptions? options,
+    BubbleOptions? bubbleOptions,
+    NotificationOptions? notificationOptions,
     VoidCallback? onTap,
     Function(double x, double y)? onTapDown,
     Function(double x, double y)? onTapUp,
@@ -110,7 +111,10 @@ class MethodChannelDashBubble extends DashBubblePlatform {
 
     return (await _invokeMethod(
       Constants.startBubble,
-      (options ?? BubbleOptions()).toMap(),
+      {
+        ...(bubbleOptions ?? BubbleOptions()).toMap(),
+        ...(notificationOptions ?? NotificationOptions()).toMap()
+      },
     ));
   }
 
