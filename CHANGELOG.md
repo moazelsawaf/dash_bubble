@@ -1,3 +1,23 @@
+## 2.0.0
+
+### Breaking Changes
+
+* chore: 🚚 rename `requestPermission()` method to `requestOverlayPermission()`.
+* chore: 🚚 rename `hasPermission()` method to `hasOverlayPermission()`.
+* chore: 🚚 rename `options` parameter in `startBubble()` method to `bubbleOptions`.
+* feat: ✨ add `notificationOptions` parameter to `startBubble()` method and move the notification options from `bubbleOptions` to the new `notificationOptions`.
+🛂 starting from Android 13 (Tiramisu), the service notification will not be shown unless the `POST_NOTIFICATIONS` permission is granted at the runtime, refer to [🔔 Service Notification](https://github.com/moazelsawaf/dash_bubble#-service-notification) Section in the README file
+
+### Other Changes
+
+* build: ⬆️ bump the native dependency version to `v5.3.0`
+* build: 🔧 applied some refactoring and migration to the native code
+* refactor: 👔 update the service notification logic, refer to [🔔 Service Notification](https://github.com/moazelsawaf/dash_bubble#-service-notification) Section in the README file
+* feat: ✨ add new options to customize the notification, which are `id`, `channelId`, and `channelName`
+* refactor: ♻️ separate notification options from the bubble options
+* docs: 📝 update the documentation
+
+
 ## 1.0.0
 
 * **Breaking:** chore: 🚚 rename `onBubbleTap()` callback to `onTap()` in `startBubble()` method

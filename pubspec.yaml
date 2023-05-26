@@ -1,6 +1,6 @@
 name: dash_bubble
 description: Dash Bubble is a flutter plugin that allows you to create a floating bubble on the screen.
-version: 1.0.0
+version: 2.0.0
 repository: https://github.com/moazelsawaf/dash_bubble
 issue_tracker: https://github.com/moazelsawaf/dash_bubble/issues
 screenshots:
