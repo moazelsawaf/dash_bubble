@@ -25,7 +25,7 @@
 
 ## 💡 Overview
 
-A Flutter plugin that allows you to create a floating bubble on the screen built on top of [Floating-Bubble-View](https://github.com/TorryDo/Floating-Bubble-View) library by [TorryDo](https://github.com/TorryDo) 💙
+A Flutter plugin that allows you to create a floating bubble on the screen built on top of [Floating-Bubble-View](https://github.com/TorryDo/Floating-Bubble-View) library for Android.
 
 *The plugin currently supports **Android** only and **doesn't support IOS because** the feature of drawing over other apps is not available there*
 
@@ -37,6 +37,14 @@ This GIF is taken from the <a href="https://github.com/moazelsawaf/dash_bubble/t
 </p>
 
 ## 🚧 Breaking Changes
+
+### v2.0.0
+
+* 🚚 rename `requestPermission()` method to `requestOverlayPermission()`.
+* 🚚 rename `hasPermission()` method to `hasOverlayPermission()`.
+* 🚚 rename `options` parameter in `startBubble()` method to `bubbleOptions`.
+* ✨ add `notificationOptions` parameter to `startBubble()` method and move the notification options from `bubbleOptions` to the new `notificationOptions`.
+* 🛂 starting from Android 13 (Tiramisu), the service notification will not be shown unless the **POST_NOTIFICATIONS** permission is granted at the runtime, refer to the [Service Notification](#-service-notification) section for details.
 
 ### v1.0.0
 
@@ -91,10 +99,12 @@ DashBubble.instance.startBubble()
 
 | Method | Description | Parameters | Behavior | Notes |
 | --- | --- | --- | --- | --- |
-| `requestPermission()` | Requests the permission to draw over other apps | - | Returns `true` if the permission is granted, `false` otherwise | If the permission is already granted, this method will return `true` without asking the user<br><br>In Android versions prior to `Android 6.0 (M)`, this method will return `true` without asking the user |
-| `hasPermission()` | Checks if the permission to draw over other apps is granted | - | Returns `true` if the permission is granted, `false` otherwise | In Android versions prior to `Android 6.0 (M)`, this method will always return `true` |
+| `requestOverlayPermission()` | Requests the permission to draw over other apps (Overlay) | - | Returns `true` if the permission is granted, `false` otherwise | If the permission is already granted, this method will return `true` without asking the user<br><br>In Android versions prior to `Android 6.0 (M)`, this method will return `true` without asking the user |
+| `hasOverlayPermission()` | Checks if the permission to draw over other apps is granted (Overlay) | - | Returns `true` if the permission is granted, `false` otherwise | In Android versions prior to `Android 6.0 (M)`, this method will always return `true` |
+| `requestPostNotificationsPermission()` | Requests the permission to post notifications (Used to customize the Service Notification) | - | Returns `true` if the permission is granted, `false` otherwise<br><br>If the Android version is prior to `Android 13 (Tiramisu)`, or if the permission is already granted, this method will return `true` without asking the user. | The user can be asked for the permission only twice, if the user denied the permission twice, the function would not be able to ask for the permission anymore and it will return false, however, the user can still grant the permission manually from the app settings page.<br><br>Starting from Android 13 (Tiramisu), the service notification will not be shown unless the **POST_NOTIFICATIONS** permission is granted at the runtime |
+| `hasPostNotificationsPermission()` | Checks if the permission to post notifications is granted | - | Returns `true` if the permission is granted, `false` otherwise | If the Android version is prior to `Android 13 (Tiramisu)`, this method will always return `true` |
 | `isRunning()` | Checks if the bubble is currently running | - | Returns `true` if the bubble is running, `false` otherwise | The bubble is considered running if it is visible on the screen |
-| `startBubble()` | Starts the bubble | BubbleOptions? options<br><br>[Available Callbacks](#-available-callbacks) | Returns `true` if the bubble started successfully, `false` otherwise | If the bubble is already running or the permission is not granted, this method will return `false` |
+| `startBubble()` | Starts the bubble | BubbleOptions? bubbleOptions<br><br>NotificationOptions? notificationOptions<br><br>[Available Callbacks](#-available-callbacks) | Returns `true` if the bubble started successfully, `false` otherwise | If the bubble is already running or the permission is not granted, this method will return `false` |
 | `stopBubble()` | Stops the bubble | - | Returns `true` if the bubble stopped successfully, `false` otherwise | If the bubble is not running, this method will return `false` |
 
 ## 📝 Bubble Customization Options
@@ -137,7 +147,9 @@ The notification is shown automatically when the bubble is started and hidden au
 
 **Note**: Starting from `Android 13 (Tiramisu)`, the **POST_NOTIFICATIONS** permission must be granted to show the notification, however, you don't need to add the permission to the `AndroidManifest.xml` file because it is already added by the plugin, but you need to request it at the runtime, otherwise the notification will not be shown.
 
-This permission can be requested by calling `requestPostNotificationsPermission()` method.
+This permission can be requested by calling `requestPostNotificationsPermission()` method and can be checked by calling `hasPostNotificationsPermission()` method.
+
+If the permission is not granted, the notification will not be shown but the bubble will still work normally.
 
 ### Customization Options
 

@@ -45,7 +45,7 @@ class DashBubble {
     return DashBubblePlatform.instance.hasOverlayPermission();
   }
 
-  /// Request post notifications permission.
+  /// Request post notifications permission (Used to customize the service notification)
   ///
   /// Returns `true` if the permission is granted, `false` otherwise.
   ///
