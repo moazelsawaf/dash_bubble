@@ -1,0 +1,32 @@
+name: Greetings
+
+on: [pull_request_target, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: >
+                    Hi there, welcome to Dash Bubble! 👋🏻
+
+                    I’m glad you’re interested in contributing to this plugin. It’s a great way to learn more about the codebase and to help grow the Flutter community 💙
+
+                    If you have any questions or need help, feel free to reach out to me @moazelsawaf. I am always happy to assist you 💙
+
+                    Happy Coding! 😊
+                    
+        pr-message: >
+                    Hi there, welcome to Dash Bubble! 👋🏻
+
+                    I’m glad you’re interested in contributing to this plugin. It’s a great way to learn more about the codebase and to help grow the Flutter community 💙
+
+                    If you have any questions or need help, feel free to reach out to me @moazelsawaf. I am always happy to assist you 💙
+
+                    Happy Coding! 😊
+                    
