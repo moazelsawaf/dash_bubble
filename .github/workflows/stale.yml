@@ -27,14 +27,14 @@ jobs:
         stale-issue-label: 'stale'
         stale-pr-label: 'stale'
         
-        stale-issue-message: >
+        stale-issue-message: |
           This issue has been open for 14 days without any activity 😔
           
           If you're still working on this, please remove the `stale` label or add a comment to let us know 🙏🏻✅
           
           Otherwise, we'll consider this issue stale and will close it in 7 days ❌       
           
-        stale-pr-message: >
+        stale-pr-message: |
           This pull request has been open for 14 days without any activity 😔
           
           If you're still working on this, please remove the `stale` label or add a comment to let us know 🙏🏻✅
