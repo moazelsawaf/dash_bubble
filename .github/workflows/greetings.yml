@@ -12,21 +12,21 @@ jobs:
     - uses: actions/first-interaction@v1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: >
+        issue-message: |
                     Hi there, welcome to Dash Bubble! 👋🏻
 
-                    I’m glad you’re interested in contributing to this plugin. It’s a great way to learn more about the codebase and to help grow the Flutter community 💙
+                    I'm glad you're interested in contributing to this plugin. It's a great way to learn more about the codebase and to help grow the Flutter community 💙
 
-                    If you have any questions or need help, feel free to reach out to me @moazelsawaf. I am always happy to assist you 💙
+                    Your issue will be reviewed by the maintainers and worked on as soon as possible. If you have any questions or need help, feel free to reach out to me @moazelsawaf. I am always happy to assist you 💙
 
                     Happy Coding! 😊
                     
-        pr-message: >
+        pr-message: |
                     Hi there, welcome to Dash Bubble! 👋🏻
 
-                    I’m glad you’re interested in contributing to this plugin. It’s a great way to learn more about the codebase and to help grow the Flutter community 💙
+                    I'm glad you're interested in contributing to this plugin. It's a great way to learn more about the codebase and to help grow the Flutter community 💙
 
-                    If you have any questions or need help, feel free to reach out to me @moazelsawaf. I am always happy to assist you 💙
+                    Your pull request will be reviewed by the maintainers and worked on as soon as possible. If you have any questions or need help, feel free to reach out to me @moazelsawaf. I am always happy to assist you 💙
 
                     Happy Coding! 😊
                     
